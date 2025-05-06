@@ -2,7 +2,7 @@
 
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { products } from '@/dummyData'
+// import { products } from '@/dummyData'
 import axios from 'axios'
 
 const product = ref('')

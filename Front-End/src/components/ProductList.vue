@@ -18,7 +18,7 @@ defineProps({
         <img :src="item.image" class="card-img-top" :alt="item.image" style="width: 100%; height: 250px;">
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.brand.name }}</p>
+          <p class="card-text">{{ item.brand?.name || "no brand" }}</p>
           <RouterLink :to="`/${item.id}`" class="btn btn-outline-secondary">See Details</RouterLink>
         </div>
       </div>
