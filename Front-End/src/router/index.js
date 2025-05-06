@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ProductView from '../views/ProductsView.vue'
+import ProductCreateView from '../views/ProductCreateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,8 +21,8 @@ const router = createRouter({
     {
       path: '/add',
       name: 'ProductCreate',
-      component: ""
-    }
+      component: ProductCreateView
+    },
   ],
 })
 
