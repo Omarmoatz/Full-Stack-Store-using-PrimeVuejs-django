@@ -10,7 +10,7 @@ const products = ref([])
 
 const filteredProducts = computed(() => {
   return selectedBrand.value
-    ? products.value.filter(p => p.brand === selectedBrand.value)
+    ? products.value.filter(p => p.brand.name === selectedBrand.value)
     : products.value
 })
 
@@ -22,7 +22,7 @@ function getProducts() {
   axios(
     {
       method: "GET",
-      url: "http://127.0.0.1:8000/api/"
+      url: "http://127.0.0.1:8000/api/products"
     }
   ).then(res => products.value = res.data)
 }

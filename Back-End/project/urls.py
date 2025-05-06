@@ -21,11 +21,12 @@ from django.urls import path
 
 from rest_framework.routers import DefaultRouter
 
-from products.views import ProductViewsets
+from products.views import ProductViewsets, BrandViewsets
 
 
 router = DefaultRouter()
-router.register("api", ProductViewsets)
+router.register("api/products", ProductViewsets)
+router.register("api/brands", BrandViewsets)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

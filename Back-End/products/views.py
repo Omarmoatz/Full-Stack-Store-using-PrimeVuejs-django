@@ -21,3 +21,8 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductViewsets(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class BrandViewsets(viewsets.ModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
