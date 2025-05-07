@@ -1,9 +1,16 @@
 <script setup>
 import ProductList from '@/components/ProductList.vue'
 import ProductFilter from '@/components/ProductFilter.vue'
+import Carousel from '@/components/Carousel.vue'
 // import { products as allProducts } from '@/dummyData'
 import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
+
+
+onMounted(() => {
+  getProducts()
+})
+
 
 const selectedBrand = ref('')
 const products = ref([])
@@ -28,16 +35,12 @@ function getProducts() {
 }
 
 
-onMounted(() => {
-  getProducts()
-})
 
 </script>
 
 <template>
   <div class="container my-5">
     <div class="row g-5 ">
-
       <div class="col-3">
         <ProductFilter @filter="setSelectedBrand" />
       </div>
@@ -45,6 +48,7 @@ onMounted(() => {
       <div class="col-9">
         <ProductList :products="filteredProducts" />
       </div>
+      <Carousel :products="products"/>
 
     </div>
   </div>
