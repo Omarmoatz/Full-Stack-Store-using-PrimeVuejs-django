@@ -34,7 +34,7 @@ onMounted(()=>{
         <div class="card-body">
           <h5 class="card-title mt-5 mb-2">{{ product.name }} description</h5>
           <p class="card-text">
-            <small class="text-muted">brand: {{ product.brand.name }}</small>
+            <small class="text-muted">brand: {{ product.brand?.name || "no brand" }}</small>
           </p>
           <p class="card-text">
             <small class="text-muted">Price: ${{ product.price }}</small>

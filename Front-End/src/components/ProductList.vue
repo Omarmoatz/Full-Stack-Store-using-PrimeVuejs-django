@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <h3 class="mb-5">Our Products</h3>
+    <h3 class="mb-5">Our Products</h3>
 
   <div class="row">
     <div  v-for="item in products" :key="item.id" class="col-lg-3 g-3" >

@@ -9,8 +9,13 @@ class BrandSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductRetrieveSerializer(serializers.ModelSerializer):
     brand = BrandSerializer(read_only=True)
+    class Meta:
+        model = Product
+        fields = "__all__"
+
+class ProductCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = "__all__"
@@ -20,7 +25,12 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ProductViewsets(viewsets.ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+    serializer_class = ProductRetrieveSerializer
+
+    def get_serializer_class(self):
+        if self.action in ["create", "update", "partial_update"]:
+            return ProductCreateUpdateSerializer
+        return super().get_serializer_class()
 
 
 class BrandViewsets(viewsets.ModelViewSet):

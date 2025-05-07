@@ -20,7 +20,7 @@ const addProduct = (e) => {
   try {
     const formData = new FormData()
     formData.append('name', productName.value)
-    formData.append('brand', productBrand.value)
+    formData.append('brand', productBrand.value.id)
     formData.append('price', productPrice.value)
     formData.append('image', productImage.value)
 
@@ -29,6 +29,7 @@ const addProduct = (e) => {
         'Content-Type': 'multipart/form-data',
       },
     }).then(route.push('/'))
+
   } catch (error) {
     console.error('Failed to add product:', error)
   }
@@ -51,7 +52,7 @@ onMounted(()=>{
 <template>
   <div class="container my-5">
     <div class="row justify-content-center">
-      <div class="col-4 border p-5 m-5">
+      <div class="col-4 border p-5 m-5 bg-body-tertiary">
         <h3 class="my-5">Add new Product</h3>
         <form @submit.prevent="addProduct">
           <div class="mb-3">
