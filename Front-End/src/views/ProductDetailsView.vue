@@ -1,19 +1,28 @@
 <script setup>
 
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 // import { products } from '@/dummyData'
 import axios from 'axios'
 
 const product = ref('')
+const route = useRoute()
+const router = useRouter()
+let count = ref(0)
 
 function getSingleProduct(){
   axios(
     {
       method:"GET",
-      url:`http://127.0.0.1:8000/api/products/${useRoute().params.productId}`
+      url:`http://127.0.0.1:8000/api/products/${route.params.productId}`
     }
   ).then(res => product.value = res.data)
+}
+
+function deleteProduct(){
+  axios.delete(
+    `http://127.0.0.1:8000/api/products/${route.params.productId}/`
+  ).then(router.push('/'))
 }
 
 onMounted(()=>{
@@ -32,7 +41,7 @@ onMounted(()=>{
 
       <div class="col-md-6">
         <div class="card-body">
-          <h5 class="card-title mt-5 mb-2">{{ product.name }} description</h5>
+          <h5 class="card-title mt-5 mb-2">{{ product.name }} Details</h5>
           <p class="card-text">
             <small class="text-muted">brand: {{ product.brand?.name || "no brand" }}</small>
           </p>
@@ -46,12 +55,19 @@ onMounted(()=>{
           </p>
 
           <div class="flex my-5 py-5">
-            <form action="">
-              <input class="mx-4" type="number" name="" id=""> <!--  add a counter  -->
+            <form>
+              <button @click="count++" type="button" class="btn btn-success px-3">+</button>
+              <button type="button" class="btn btn-outline-secondary px-3 mx-2">{{ count }}</button>
+              <button @click="count--" type="button" class="btn btn-success px-3 me-5">-</button>
+              
               <button class="btn btn-success px-3">Add to Cart</button>
             </form>
           </div>
-          <RouterLink to="/" class="btn btn-secondary mt-5">Back to Product Lists</RouterLink>
+          <div class="d-flex">
+            <RouterLink to="/" class="btn btn-secondary px-5 mt-5 me-5">Back to Product Lists</RouterLink>
+            <button @click="deleteProduct()" class="btn btn-danger px-5 mt-5 ms-5" >Delete Product</button>
+          </div>
+
 
         </div>
       </div>
