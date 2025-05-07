@@ -41,7 +41,13 @@ onMounted(()=>{
 
       <div class="col-md-6">
         <div class="card-body">
-          <h5 class="card-title mt-5 mb-2">{{ product.name }} Details</h5>
+
+          <div class="d-flex">
+            <h5 class="card-title mt-5 mb-2 me-5 pe-5">{{ product.name }} Details</h5>
+            <RouterLink :to="`/${product.id}/update`" class="btn btn-outline-info px-3 mt-5 ms-5">Update the Product</RouterLink>
+          </div>
+
+
           <p class="card-text">
             <small class="text-muted">brand: {{ product.brand?.name || "no brand" }}</small>
           </p>
