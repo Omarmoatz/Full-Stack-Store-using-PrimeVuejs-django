@@ -2,12 +2,15 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useToast } from 'primevue/usetoast';
+
 
 const productName = ref('')
 const productBrand = ref('')
 const productPrice = ref('')
 const productImage = ref(null)
 const brands = ref([])
+const toast = useToast();
 
 const route = useRouter()
 
@@ -19,7 +22,9 @@ onMounted(() => {
 })
 
 const handleFileChange = (event) => {
-  productImage.value = event.target.files[0]
+  productImage.value = event.files[0]
+  toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded Successfully', life: 6000 });
+
 }
 
 const addProduct = () => {
@@ -34,9 +39,13 @@ const addProduct = () => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-    }).then(route.push('/'))
+    })
+    
+    toast.add({ severity: 'success', summary: 'Success', detail: 'Product added Successfully', life: 10000 });
+    route.push('/')
 
   } catch (error) {
+    toast.add({ severity: 'error', summary: 'Failed to add product', detail: error, life: 5000 });
     console.error('Failed to add product:', error)
   }
 }
@@ -58,13 +67,13 @@ const addProduct = () => {
                 <i class="pi pi-user"></i>
               </InputGroupAddon>
               <FloatLabel>
-                <InputText name="productName" id="productName" v-model="productName" required :invalid="!productName"/>
+                <InputText name="productName" id="productName" v-model="productName" required />
                 <label for="productName">Name</label>
               </FloatLabel>
             </InputGroup>
           </div>
 
-          <div class="card flex flex-col md:items-end md:flex-row gap-4 mt-5">
+          <div class="card flex flex-col md:items-end md:flex-row gap-4 mt-2">
             <InputGroup>
               <InputGroupAddon>$</InputGroupAddon>
               <FloatLabel variant="in">
@@ -75,7 +84,7 @@ const addProduct = () => {
             </InputGroup>
           </div>
 
-          <div class="card flex flex-col md:items-end md:flex-row gap-4 mt-5">
+          <div class="card flex flex-col md:items-end md:flex-row gap-4 mt-2">
             <InputGroup>
               <InputGroupAddon>www</InputGroupAddon>
               <FloatLabel variant="on">
@@ -85,7 +94,7 @@ const addProduct = () => {
             </InputGroup>
           </div>
 
-          <div class="card grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+          <div class="card grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <InputGroup>
               <InputGroupAddon>
                 <i class="pi pi-map"></i>
@@ -94,12 +103,12 @@ const addProduct = () => {
             </InputGroup>
           </div>
 
-          <div class="my-5">
-            <label for="formFile" class="form-label">Image</label>
-            <input class="form-control" type="file" id="formFile" @change="handleFileChange" required>
+          <div class=" mt-2">
+              <Toast />
+              <FileUpload ref="productImage" mode="basic" name="demo[]" accept="image/*" :maxFileSize="1000000" @select="handleFileChange" />
           </div>
 
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class=" p-button mt-2" severity="secondary">Add</button>
         </Form>
       </div>
     </div>

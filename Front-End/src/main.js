@@ -16,7 +16,9 @@ import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
-import { Message, Select } from 'primevue';
+import FileUpload from 'primevue/fileupload';
+
+import { Message, Ripple, Select } from 'primevue';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import KeyFilter from 'primevue/keyfilter';
@@ -57,6 +59,8 @@ app.component('InputGroup', InputGroup)
 app.component('InputGroupAddon', InputGroupAddon)
 app.component('InputText', InputText)
 app.component('FloatLabel', FloatLabel)
+app.component('FileUpload', FileUpload)
+
 app.component('Select', Select)
 app.component('Message', Message)
 app.component('Form', Form)
@@ -65,5 +69,6 @@ app.use(ToastService);
 app.component('Toast', Toast);
 
 app.directive('keyfilter', KeyFilter);
+app.directive('Ripple', Ripple);
 
 app.mount('#app')
