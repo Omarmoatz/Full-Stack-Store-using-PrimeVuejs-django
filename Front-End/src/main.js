@@ -8,6 +8,10 @@ import Aura from '@primeuix/themes/aura'
 import Lara from '@primeuix/themes/lara'
 import Nora from '@primeuix/themes/nora'
 
+import Menubar from 'primevue/menubar';
+import Badge from 'primevue/badge';
+import Avatar from 'primevue/avatar';
+
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import InputText from 'primevue/inputtext';
@@ -21,9 +25,9 @@ import KeyFilter from 'primevue/keyfilter';
 import 'primeicons/primeicons.css'
 
 
-import './assets/tailwind.css';
 // import tailwindcss from './tailwind.config.js';
 
+import './assets/tailwind.css';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import { useForm } from '@primevue/forms/useform';
@@ -45,7 +49,10 @@ app.use(PrimeVue, {
     }
 });
 
-// useForm
+app.component('Menubar', Menubar)
+app.component('Badge', Badge)
+app.component('Avatar', Avatar)
+
 app.component('InputGroup', InputGroup)
 app.component('InputGroupAddon', InputGroupAddon)
 app.component('InputText', InputText)
