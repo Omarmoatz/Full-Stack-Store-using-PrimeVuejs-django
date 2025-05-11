@@ -57,12 +57,12 @@ const getSeverity = (status) => {
 
 
     <Carousel :value="products" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular
-        :autoplayInterval="3000">
+        :autoplayInterval="4000">
         <template #item="slotProps">
-            <div class="border border-surface-200 dark:border-surface-700 rounded m-2  p-4">
+            <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
                 <div class="mb-4">
                     <div class="relative mx-auto">
-                        <img :src="slotProps.data.image" :alt="slotProps.data.name" class="w-full rounded" width="350px"
+                        <img :src="slotProps.data.image" :alt="slotProps.data.name" class="w-full rounded" width="200px"
                             height="200px" />
                         <Tag :value="slotProps.data.inventoryStatus"
                             :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute"
@@ -70,11 +70,11 @@ const getSeverity = (status) => {
                     </div>
                 </div>
                 <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
-                <div class="flex justify-between items-center">
+                <div class="d-flex justify-between items-center">
                     <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
                     <span>
                         <Button icon="pi pi-heart" severity="secondary" outlined />
-                        <Button icon="pi pi-shopping-cart" class="ml-2" />
+                        <Button icon="pi pi-shopping-cart" class="ms-2" />
                     </span>
                 </div>
             </div>

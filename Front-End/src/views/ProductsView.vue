@@ -48,8 +48,14 @@ function getProducts() {
       <div class="col-9">
         <ProductList :products="filteredProducts" />
       </div>
-      <Carousel :products="products"/>
+      
+    </div>
+  </div>
 
+  <div class="container py-5 my-5">
+    <div class="row justify-content-center my-5 ">
+      <h2 class=" text-center my-5">Featured Products</h2>
+      <Carousel :products="products"/>
     </div>
   </div>
 </template>
