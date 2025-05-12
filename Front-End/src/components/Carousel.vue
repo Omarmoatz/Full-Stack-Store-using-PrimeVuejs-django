@@ -1,8 +1,5 @@
 <script setup>
-import Message from 'primevue/message';
-import Carousel from 'primevue/carousel';
-import { Button } from 'primevue';
-import { computed, onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
 defineProps({
     products: {
@@ -62,8 +59,7 @@ const getSeverity = (status) => {
             <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
                 <div class="mb-4">
                     <div class="relative mx-auto">
-                        <img :src="slotProps.data.image" :alt="slotProps.data.name" class="w-full rounded" width="200px"
-                            height="200px" />
+                        <img :src="slotProps.data.image" :alt="slotProps.data.name" class="carousel-img w-full rounded" />
                         <Tag :value="slotProps.data.inventoryStatus"
                             :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute"
                             style="left:5px; top: 5px" />
@@ -82,3 +78,11 @@ const getSeverity = (status) => {
     </Carousel>
 
 </template>
+
+<style scoped>
+.carousel-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+</style>

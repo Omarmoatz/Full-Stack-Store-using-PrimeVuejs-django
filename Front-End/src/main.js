@@ -18,7 +18,8 @@ import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import FileUpload from 'primevue/fileupload';
 
-import { Message, Ripple, Select } from 'primevue';
+import Carousel from 'primevue/carousel';
+import { Button, Message, Ripple, Select, Tag } from 'primevue';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import KeyFilter from 'primevue/keyfilter';
@@ -61,6 +62,9 @@ app.component('InputText', InputText)
 app.component('FloatLabel', FloatLabel)
 app.component('FileUpload', FileUpload)
 
+app.component('Tag', Tag)
+app.component('Carousel', Carousel)
+app.component('Button', Button)
 app.component('Select', Select)
 app.component('Message', Message)
 app.component('Form', Form)

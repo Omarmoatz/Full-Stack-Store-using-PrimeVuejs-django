@@ -1,7 +1,7 @@
 
 <template>
   <div class="card">
-      <Menubar :model="items" class="bg-yellow-400  !important">
+      <Menubar :model="items">
           <template #start>
               <router-link to="/" class="flex items-center gap-2 no-underline text-surface hover:text-primary transition-colors">
                 <svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8">
