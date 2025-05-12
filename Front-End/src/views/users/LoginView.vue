@@ -15,9 +15,13 @@
                 </router-link>
                 <div class="flex flex-col gap-2 w-full">
                     <div class="text-center text-3xl font-medium text-white leading-tight">Welcome Back</div>
-                    <div class="text-center">
+                    <div class="flex justify-center text-center">
                         <span class="text-white/80">Don't have an account? </span>
-                        <a class="text-white/80 cursor-pointer hover:text-white/90 underline">Sign up</a>
+
+                        <router-link to="/register">
+                            <p class="text-white/80 cursor-pointer hover:text-white/90 underline ms-1">Sign up Now</p>
+                        </router-link>
+
                     </div>
                 </div>
             </div>
@@ -61,8 +65,9 @@
 
                 </Form>
             </div>
-
-            <a class="text-white/80 cursor-pointer hover:text-white/90">Forgot Password?</a>
+            <router-link to="/register">
+                <p class="text-white/80 cursor-pointer hover:text-white/90 underline ms-1">Forgot Your Password?</p>
+            </router-link>
         </div>
     </div>
 
@@ -87,7 +92,7 @@ const initialValues = ref({
 
 const resolver = zodResolver(
     z.object({
-        username: z.string().min(1, { message: 'Username is required.' }),
+        username: z.string().min(4, { message: 'Username is required.' }),
         password: z
             .string()
             .min(3, { message: 'Minimum 3 characters.' })
@@ -104,7 +109,7 @@ const resolver = zodResolver(
     })
 );
 
-const onFormSubmit = (e) => {    
+const onFormSubmit = (e) => {
     // e.originalEvent: Represents the native form submit event.
     // e.valid: A boolean that indicates whether the form is valid or not.
     // e.states: Contains the current state of each form field, including validity status.

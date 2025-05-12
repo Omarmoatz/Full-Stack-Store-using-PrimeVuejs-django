@@ -3,6 +3,7 @@ import ProductView from '../views/products/ProductsView.vue'
 import ProductCreateView from '../views/products/ProductCreateView.vue'
 import ProductUpdateView from '../views/products/ProductUpdateView.vue'
 import LoginView from '@/views/users/LoginView.vue'
+import RegisterView from '@/views/users/RegisterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +34,14 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      meta: {hideNavbar:true}
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView,
+      meta: {hideNavbar:true}
     },
   ],
 })

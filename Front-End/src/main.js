@@ -17,6 +17,7 @@ import InputGroupAddon from 'primevue/inputgroupaddon';
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import FileUpload from 'primevue/fileupload';
+import Checkbox from 'primevue/checkbox';
 
 import Carousel from 'primevue/carousel';
 import { Button, IconField, InputIcon, Message, Password, Ripple, Select, Tag } from 'primevue';
@@ -62,6 +63,7 @@ app.component('InputGroupAddon', InputGroupAddon)
 app.component('InputText', InputText)
 app.component('FloatLabel', FloatLabel)
 app.component('FileUpload', FileUpload)
+app.component('Checkbox', Checkbox)
 
 app.component('Tag', Tag)
 app.component('Carousel', Carousel)

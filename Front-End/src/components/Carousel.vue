@@ -60,7 +60,7 @@ const getSeverity = (status) => {
                 <div class="mb-4">
                     <div class="relative mx-auto">
                         <img :src="slotProps.data.image" :alt="slotProps.data.name" class="carousel-img w-full rounded" />
-                        <Tag :value="slotProps.data.inventoryStatus"
+                        <Tag value="Featured"
                             :severity="getSeverity(slotProps.data.inventoryStatus)" class="absolute"
                             style="left:5px; top: 5px" />
                     </div>

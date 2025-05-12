@@ -29,12 +29,20 @@
           </template>
           <template #end>
               <div class="flex items-center gap-2">
+                <router-link to="/register">
+                  <button class="p-button">
+                    <i class="pi pi-user-plus mr-2"></i>
+                    Register
+                  </button>
+                </router-link>
+
                 <router-link to="/login">
                   <button class="p-button p-button-info">
                     <i class="pi pi-users mr-2"></i>
                     Login
                   </button>
                 </router-link>
+
                 <router-link to="/new">
                   <button class="p-button p-button-success">
                     <i class="pi pi-plus mr-2"></i>
