@@ -20,7 +20,7 @@ import FileUpload from 'primevue/fileupload';
 import Checkbox from 'primevue/checkbox';
 
 import Carousel from 'primevue/carousel';
-import { Button, IconField, InputIcon, Message, Password, Ripple, Select, Tag } from 'primevue';
+import { Button, Card, IconField, InputIcon, Message, Password, Ripple, Select, Tag } from 'primevue';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import KeyFilter from 'primevue/keyfilter';
@@ -70,12 +70,13 @@ app.component('Carousel', Carousel)
 app.component('Button', Button)
 app.component('Select', Select)
 app.component('Message', Message)
+app.component('Card', Card)
 
 app.component('Form', Form)
 app.component('Password', Password)
 
-app.use(ToastService);
 app.component('Toast', Toast);
+app.use(ToastService);
 
 app.directive('keyfilter', KeyFilter);
 app.directive('Ripple', Ripple);

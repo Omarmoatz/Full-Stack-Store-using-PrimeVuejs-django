@@ -16,6 +16,3 @@ const route = useRoute()
 
   <RouterView />
 </template>
-
-
-

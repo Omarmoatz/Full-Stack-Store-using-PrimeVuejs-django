@@ -5,6 +5,7 @@ import Carousel from '@/components/Carousel.vue'
 // import { products as allProducts } from '@/dummyData'
 import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
+import OurService from '@/components/OurService.vue'
 
 
 onMounted(() => {
@@ -39,23 +40,34 @@ function getProducts() {
 </script>
 
 <template>
-  <div class="container my-5">
-    <div class="row g-5 ">
-      <div class="col-3">
-        <ProductFilter @filter="setSelectedBrand" />
-      </div>
+  <div class="my-5">
+    <div class="container mx-auto my-5">
+      <div class="grid grid-cols-[200px_auto] ">
+        <div class="">
+          <ProductFilter @filter="setSelectedBrand" />
+        </div>
 
-      <div class="col-9">
-        <ProductList :products="filteredProducts" />
-      </div>
-      
-    </div>
-  </div>
+        <div class="">
+          <ProductList :products="filteredProducts" />
+        </div>
 
-  <div class="container py-5 my-5">
-    <div class="row justify-content-center my-5 ">
-      <h2 class=" text-center my-5">Featured Products</h2>
-      <Carousel :products="products"/>
+      </div>
     </div>
-  </div>
+
+    <div class="container py-5 my-5">
+      <div class=" grid-cols-1 ">
+        <h2 class=" text-center my-5">Featured Products</h2>
+        <Carousel :products="products" />
+      </div>
+    </div>
+
+
+      <div class=" grid !grid-cols-1">
+
+        <OurService/>
+      </div>
+    </div>
+
+
+
 </template>
