@@ -26,74 +26,86 @@
                 </div>
             </div>
 
-            <Form v-slot="$form" :initial-values :resolver class="flex flex-col gap-8 w-full bg-transparent">
+            <Form v-slot="$form" :initial-values :resolver @submit="submitForm"
+            class="flex flex-col gap-8 w-full bg-transparent">
 
-                    <div class="flex flex-col gap-1 w-full">
-                        <InputGroup>
-                            <InputGroupAddon>
-                                <i class="pi pi-user"></i>
-                            </InputGroupAddon>
-                            <FloatLabel>
-                                <InputText name="username" id="username" type="text"/>
-                                <label for="username">Username</label>
-                            </FloatLabel>
-                            
-                        </InputGroup>
-                        <Message v-if="$form.username?.invalid" severity="warn" size="small" variant="simple" >
-                            {{ $form.username.error.message }}
-                        </Message>
-                    </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <InputGroup>
+                        <InputGroupAddon>
+                            <i class="pi pi-user"></i>
+                        </InputGroupAddon>
+                        <FloatLabel>
+                            <InputText name="username" id="username" type="text" />
+                            <label for="username">Username</label>
+                        </FloatLabel>
 
-                    <div class="flex flex-col gap-1 w-full">
-                        <InputGroup>
-                            <InputGroupAddon>
-                                <i class="pi pi-envelope"></i>
-                            </InputGroupAddon>
-                            <FloatLabel>
-                                <InputText type="email" name="email" id="email" />
-                                <label for="email">Email</label>
-                            </FloatLabel>
-                        </InputGroup>
-                        <Message v-if="$form.email?.invalid" severity="warn" variant="simple" size="small">
-                            {{ $form.email.error.message }}
-                        </Message>
-                    </div>
+                    </InputGroup>
+                    <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">
+                        {{ $form.username.error.message }}
+                        <!-- <ul class="my-0 px-4 flex flex-col gap-1">
+                                <li v-for="(err, index) in $form.username.errors" :key="index">
+                                    {{err.message}}
+                                </li>
+                            </ul> -->
+                    </Message>
+                </div>
 
-
-                    <div class="flex flex-col gap-1 w-full">
-                        <InputGroup>
-                            <InputGroupAddon>
-                                <i class="pi pi-lock"></i>
-                            </InputGroupAddon>
-                            <FloatLabel variant="in">
-                                <Password name="password" :feedback="false" toggleMask fluid  />
-                                <label for="password">Password</label>
-                            </FloatLabel>
-                        </InputGroup>
-                        
-                        <Message v-if="$form.password?.error" severity="warn" variant="simple" size="small">
-                            {{ $form.password.error.message }}
-                        </Message>
-                    </div>
-
-                    <div class="flex flex-col gap-1 w-full">
-                        <InputGroup>
-                            <InputGroupAddon>
-                                <i class="pi pi-lock"></i>
-                            </InputGroupAddon>
-                            <FloatLabel variant="in">
-                                <Password name="confirmPassword" :feedback="false" toggleMask fluid  />
-                                <label for="confirmPassword">Confirm Password</label>
-                            </FloatLabel>
-                        </InputGroup>
-
-                        <Message v-if="$form.confirmPassword?.error" severity="warn" variant="simple" size="small">
-                            {{ $form.confirmPassword.error.message }}
-                        </Message>
-                    </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <InputGroup>
+                        <InputGroupAddon>
+                            <i class="pi pi-envelope"></i>
+                        </InputGroupAddon>
+                        <FloatLabel>
+                            <InputText type="email" name="email" id="email" />
+                            <label for="email">Email</label>
+                        </FloatLabel>
+                    </InputGroup>
+                    <Message v-if="$form.email?.invalid" severity="error" variant="simple" size="small">
+                        {{ $form.email.error.message }}
+                    </Message>
+                </div>
 
 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-3 sm:gap-0">
+                <div class="flex flex-col gap-1 w-full">
+                    <InputGroup>
+                        <InputGroupAddon>
+                            <i class="pi pi-lock"></i>
+                        </InputGroupAddon>
+                        <FloatLabel variant="in">
+                            <Password name="password" :feedback="false" toggleMask fluid />
+                            <label for="password">Password</label>
+                        </FloatLabel>
+                    </InputGroup>
+
+                    <Message v-if="$form.password?.error" severity="error" variant="simple" size="small">
+                        <!-- {{ $form.password.error.message }} -->
+                        <ul>
+                            <li v-for="err in $form.password.errors">
+                                {{ err.message }}
+                            </li>
+                        </ul>
+                    </Message>
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <InputGroup>
+                        <InputGroupAddon>
+                            <i class="pi pi-lock"></i>
+                        </InputGroupAddon>
+                        <FloatLabel variant="in">
+                            <Password name="confirmPassword" :feedback="false" toggleMask fluid />
+                            <label for="confirmPassword">Confirm Password</label>
+                        </FloatLabel>
+                    </InputGroup>
+
+                    <Message v-if="$form.confirmPassword?.error" severity="error" variant="simple" size="small">
+                        {{ $form.confirmPassword.error.message }}
+                    </Message>
+                </div>
+
+
+                <div
+                    class="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-3 sm:gap-0">
                     <div class="flex items-center gap-2">
                         <Checkbox id="rememberme1" v-model="checked1" :binary="true" />
                         <label for="rememberme1" class="text-surface-900 dark:text-surface-0 leading-normal">Remember
@@ -101,7 +113,7 @@
                     </div>
                     <!-- <a class="text-primary font-medium cursor-pointer hover:text-primary-emphasis">Forgot your password?</a> -->
                 </div>
-                <Button label="Sign In" icon="pi pi-user" type="submit"
+                <Button label="Sign Up" icon="pi pi-user" type="submit"
                     class="w-full py-2 rounded-lg flex justify-center items-center gap-2">
                     <template #icon>
                         <i class="pi pi-user !text-base !leading-normal" />
@@ -119,30 +131,62 @@
 import { ref } from 'vue';
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
+import { useRouter } from 'vue-router';
 
 
 
 const checked1 = ref(true);
+const route = useRouter()
+
 
 const initialValues = {
-    username : "",
-    email : "",
-    password : "",
-    confirmPassword : ""
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
 }
 
 const resolver = zodResolver(
     z.object({
-        username: z.string().min(4, "Username Must be more than 4 chars"),
-        email: z.string().min(4, "Email Must be more than 4 chars"),
+        username: z.string()
+            .min(1, "Username is required")
+            .min(4, "Username Must be more than 4 chars"),
+
+        email: z.string()
+            .min(1, "Email is Required")
+            .email("Invalid email format"),
+
         password: z.string()
-                    .min(4, "Password is required"),
+            .min(1, "Password is required")
+            .min(8, "Minimum is 8 Characters")
+            .max(20, "Maximum is 20 Characters")
+            .refine(value => /[a-z]/.test(value),
+                "Must Contain Lowercase Letters"
+            )
+            .refine(value => /[A-Z]/.test(value),
+                "Must Contain Uppercase Letters"
+            )
+            .refine(value => /[1-9]/.test(value),
+                "Must Contain Numbers"
+            )
+            .refine(value => /[!@#$%^&*]/.test(value),
+                "Must Contain Special Characters"
+            ),
+
         confirmPassword: z.string()
-                    .min(4, "confirmPassword is required"),
+            .min(1, "Confirm Password is required")
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        path: ["confirmPassword"],
+        message: "Confirm password does not match"
     })
 )
 
-
+const submitForm = (e) => {
+    if (e.valid) {
+        route.push('/')
+    }
+}
 
 
 
