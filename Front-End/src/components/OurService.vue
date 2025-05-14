@@ -10,7 +10,8 @@
             </div>
             <div class="grid !grid-cols-1 md:!grid-cols-2 lg:!grid-cols-3 gap-3 p-4">
 
-                <div v-for="item in items" class="w-full rounded-md p-4">
+                <div v-animateonscroll="{ enterClass: 'animate-enter fade-in-10 zoom-in-50 animate-duration-1000' }" 
+                v-for="item in items" class="w-full rounded-md p-4">
                     <span class="mb-4 flex h-16 w-16 items-center justify-center rounded-lg bg-surface-0 dark:bg-surface-800 shadow mx-auto">
                         <i :class="`${item.icon} !text-2xl lg:!text-3xl text-primary-500 dark:text-primary-400`" />
                     </span>

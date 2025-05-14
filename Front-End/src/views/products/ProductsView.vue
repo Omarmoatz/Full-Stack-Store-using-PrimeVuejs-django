@@ -15,6 +15,7 @@ onMounted(() => {
 
 const selectedBrand = ref('')
 const products = ref([])
+const loading = ref(true)
 
 const filteredProducts = computed(() => {
   return selectedBrand.value
@@ -26,13 +27,13 @@ const setSelectedBrand = (brand) => {
   selectedBrand.value = brand
 }
 
-function getProducts() {
-  axios(
-    {
-      method: "GET",
-      url: "http://127.0.0.1:8000/api/products"
-    }
-  ).then(res => products.value = res.data)
+async function getProducts() {
+  try {
+    const res = await axios.get("http://127.0.0.1:8000/api/products")
+    products.value = res.data
+  } catch (e) {
+    console.error("Error fetching products", e)
+  }
 }
 
 
@@ -40,15 +41,15 @@ function getProducts() {
 </script>
 
 <template>
-  <div class="my-5">
-    <div class="container mx-auto my-5">
-      <div class="grid grid-cols-[200px_auto] ">
-        <div class="">
+  <div class="py-50">
+    <div class="px-30 ">
+      <div class="grid grid-cols-[200px_auto] max-sm:!grid-cols-1 sm:!grid-cols-1 md:!grid-cols-1 lg:!grid-cols-[200px_auto]">
+        <div >
           <ProductFilter @filter="setSelectedBrand" />
         </div>
 
-        <div class="">
-          <ProductList :products="filteredProducts" />
+        <div >
+          <ProductList :products="filteredProducts"/>
         </div>
 
       </div>
@@ -63,10 +64,9 @@ function getProducts() {
 
 
       <div class=" grid !grid-cols-1">
-
         <OurService/>
       </div>
-    </div>
+  </div>
 
 
 

@@ -12,6 +12,8 @@ import Menubar from 'primevue/menubar';
 import Badge from 'primevue/badge';
 import Avatar from 'primevue/avatar';
 
+import { useForm } from '@primevue/forms/useform';
+import { Form } from '@primevue/forms';
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
 import InputText from 'primevue/inputtext';
@@ -24,17 +26,20 @@ import { Button, Card, IconField, InputIcon, Message, Password, Ripple, Select, 
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import KeyFilter from 'primevue/keyfilter';
+import Skeleton from 'primevue/skeleton';
+
+
+
+import AnimateOnScroll from 'primevue/animateonscroll';
 
 import 'primeicons/primeicons.css'
 
 
-// import tailwindcss from './tailwind.config.js';
-
-import './assets/tailwind.css';
 import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
-import { useForm } from '@primevue/forms/useform';
-import { Form } from '@primevue/forms';
+// import "bootstrap"
+
+import '../tailwind.config.js';
+import './assets/tailwind.css';
 
 
 const app = createApp(App)
@@ -71,6 +76,7 @@ app.component('Button', Button)
 app.component('Select', Select)
 app.component('Message', Message)
 app.component('Card', Card)
+app.component('Skeleton', Skeleton)
 
 app.component('Form', Form)
 app.component('Password', Password)
@@ -80,5 +86,8 @@ app.use(ToastService);
 
 app.directive('keyfilter', KeyFilter);
 app.directive('Ripple', Ripple);
+app.directive('animateonscroll', AnimateOnScroll);
+
+
 
 app.mount('#app')

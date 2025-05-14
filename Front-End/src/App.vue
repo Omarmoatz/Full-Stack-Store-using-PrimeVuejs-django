@@ -11,8 +11,16 @@ const route = useRoute()
 </script>
 
 <template>
-  <!-- Show Navbar unless current route is in the hidden list -->
   <NavBar v-if="!route.meta.hideNavbar" />
 
   <RouterView />
+
+  <div class="p-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div v-for="i in 8" :key="i" class="bg-blue-300 p-6 rounded-lg text-white text-center font-bold">
+        Card {{ i }} 
+      </div>
+    </div>
+  </div>
+
 </template>
